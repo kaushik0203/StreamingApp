@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streaming
+  namespace: streamingapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: streaming
+  template:
+    metadata:
+      labels:
+        app: streaming
+    spec:
+      containers:
+      - name: streaming
+        image: 712934828955.dkr.ecr.ap-south-1.amazonaws.com/streamingapp-streaming:latest
+        ports:
+        - containerPort: 3002
+        env:
+        - name: PORT
+          value: "3002"
+        - name: MONGO_URI
+          value: "mongodb://mongo:27017/streamingapp"
+        - name: JWT_SECRET
+          value: "changeme"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: streaming-service
+  namespace: streamingapp
+spec:
+  selector:
+    app: streaming
+  ports:
+  - port: 3002
+    targetPort: 3002
