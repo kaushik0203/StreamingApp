@@ -130,3 +130,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+kubectl
+eksctl_Linux_amd64.tar.gz
