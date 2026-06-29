@@ -132,3 +132,5 @@ dist
 .pnp.*
 kubectl
 eksctl_Linux_amd64.tar.gz
+kubectl
+eksctl_Linux_amd64.tar.gz
